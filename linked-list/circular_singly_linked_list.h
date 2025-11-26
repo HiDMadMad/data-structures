@@ -6,7 +6,7 @@ struct CircularLinkedList
     CircularLinkedList *next;
 };
 
-CircularLinkedList *CreateNodeCS(double NodeData) // CS : CircularSingly
+CircularLinkedList *CreateNodeCS(double NodeData) // CS : Circular Singly
 {
     CircularLinkedList *LL = new CircularLinkedList;
     LL->data = NodeData;  // == *(LL.data)=NodeData;
@@ -145,7 +145,7 @@ void DelFromMid(CircularLinkedList *(&StarterNode), unsigned index)
 }
 
 
-void display(CircularLinkedList *StarterNode)
+void DisplayCS(CircularLinkedList *StarterNode)
 {
     std::cout<<"\nStartOfList";
     if(StarterNode == nullptr)
@@ -156,6 +156,7 @@ void display(CircularLinkedList *StarterNode)
         std::cout<<" -> "<<tmp->data;
         tmp = tmp->next;
     }while(tmp != StarterNode);
+    std::cout<<" -> "<<StarterNode->data<<"(Starter Node)\n";
 }
 
 void FreeMemory(CircularLinkedList *(&StarterNode))
@@ -174,4 +175,4 @@ void FreeMemory(CircularLinkedList *(&StarterNode))
     StarterNode = nullptr;
 }
 
-//MadMad_177
+//MadMad_178

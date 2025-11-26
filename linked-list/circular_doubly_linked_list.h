@@ -6,7 +6,7 @@ struct CircularDoublyLinkedList
     CircularDoublyLinkedList *prev, *next;
 };
 
-CircularDoublyLinkedList *CreateNodeCD(double NodeData) // CD : CircularDoubly
+CircularDoublyLinkedList *CreateNodeCD(double NodeData) // CD : Circular Doubly
 {
     CircularDoublyLinkedList *LL = new CircularDoublyLinkedList{NodeData, nullptr, nullptr};
     // LL->data = NodeData;  // == *(LL.data)=NodeData;
@@ -138,7 +138,7 @@ void DelFromMid(CircularDoublyLinkedList *(&StarterNode), unsigned index)
 }
 
 
-void display(CircularDoublyLinkedList *StarterNode)
+void DisplayCD(CircularDoublyLinkedList *StarterNode)
 {
     std::cout<<"\nStartOfList -> ";
     if(StarterNode == nullptr)
@@ -156,6 +156,7 @@ void display(CircularDoublyLinkedList *StarterNode)
             std::cout<<" <-> "<<tmp->data;
         tmp = tmp->next;
     }while(tmp != StarterNode);
+    std::cout<<" -> "<<StarterNode->data<<"(Starter Node)\n";
 }
 
 void FreeMemory(CircularDoublyLinkedList *(&StarterNode))
@@ -174,4 +175,4 @@ void FreeMemory(CircularDoublyLinkedList *(&StarterNode))
     StarterNode = nullptr;
 }
 
-//MadMad_177
+//MadMad_178

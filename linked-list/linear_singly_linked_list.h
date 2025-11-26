@@ -6,7 +6,7 @@ struct LinearLinkedList
     LinearLinkedList *next;
 };
 
-LinearLinkedList *CreateNodeLS(double NodeData) // LS : LinearSingly
+LinearLinkedList *CreateNodeLS(double NodeData) // LS : Linear Singly
 {
     LinearLinkedList *LL = new LinearLinkedList;
     LL->data = NodeData;  // == *(LL.data)=NodeData;
@@ -117,7 +117,7 @@ void DelFromMid(LinearLinkedList *(&StarterNode), unsigned index)
 }
 
 
-void display(LinearLinkedList *StarterNode)
+void DisplayLS(LinearLinkedList *StarterNode)
 {
     std::cout<<"\nStartOfList";
     LinearLinkedList *tmp = StarterNode;

@@ -6,7 +6,7 @@ struct LinearDoublyLinkedList
     LinearDoublyLinkedList *prev, *next;
 };
 
-LinearDoublyLinkedList *CreateNodeLD(double NodeData) // LD : LinearDoubly
+LinearDoublyLinkedList *CreateNodeLD(double NodeData) // LD : Linear Doubly
 {
     LinearDoublyLinkedList *LL = new LinearDoublyLinkedList{NodeData, nullptr, nullptr};
     // LL->data = NodeData;  // == *(LL.data)=NodeData;
@@ -126,7 +126,7 @@ void DelFromMid(LinearDoublyLinkedList *(&StarterNode), unsigned index)
 }
 
 
-void display(LinearDoublyLinkedList *StarterNode)
+void DisplayLD(LinearDoublyLinkedList *StarterNode)
 {
     std::cout<<"\nStartOfList -> ";
     LinearDoublyLinkedList *tmp = StarterNode;

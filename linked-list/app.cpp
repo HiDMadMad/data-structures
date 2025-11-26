@@ -69,22 +69,22 @@ int main()
                     if(ActiveListType == LinearSingly)
                     {
                         InsertAtBegin(StartOfLinearSingly, data);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         InsertAtBegin(StartOfCircularSingly, data);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         InsertAtBegin(StartOfLinearDoubly, data);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         InsertAtBegin(StartOfCircularDoubly, data);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 2:
@@ -95,22 +95,22 @@ int main()
                     if(ActiveListType == LinearSingly)
                     {
                         InsertInMid(StartOfLinearSingly, index, data);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         InsertInMid(StartOfCircularSingly, index, data);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         InsertInMid(StartOfLinearDoubly, index, data);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         InsertInMid(StartOfCircularDoubly, index, data);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 3:
@@ -119,44 +119,44 @@ int main()
                     if(ActiveListType == LinearSingly)
                     {
                         InsertAtEnd(StartOfLinearSingly, data);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         InsertAtEnd(StartOfCircularSingly, data);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         InsertAtEnd(StartOfLinearDoubly, data);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         InsertAtEnd(StartOfCircularDoubly, data);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 4:
                     if(ActiveListType == LinearSingly)
                     {
                         DelFromBegin(StartOfLinearSingly);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         DelFromBegin(StartOfCircularSingly);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         DelFromBegin(StartOfLinearDoubly);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         DelFromBegin(StartOfCircularDoubly);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 5:
@@ -165,44 +165,44 @@ int main()
                     if(ActiveListType == LinearSingly)
                     {
                         DelFromMid(StartOfLinearSingly, index);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         DelFromMid(StartOfCircularSingly, index);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         DelFromMid(StartOfLinearDoubly, index);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         DelFromMid(StartOfCircularDoubly, index);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 6:
                     if(ActiveListType == LinearSingly)
                     {
                         DelFromEnd(StartOfLinearSingly);
-                        display(StartOfLinearSingly);
+                        DisplayLS(StartOfLinearSingly);
                     }
                     else if(ActiveListType == CircularSingly)
                     {
                         DelFromEnd(StartOfCircularSingly);
-                        display(StartOfCircularSingly);
+                        DisplayCS(StartOfCircularSingly);
                     }
                     else if(ActiveListType == LinearDoubly)
                     {
                         DelFromEnd(StartOfLinearDoubly);
-                        display(StartOfLinearDoubly);
+                        DisplayLD(StartOfLinearDoubly);
                     }
                     else if(ActiveListType == CircularDoubly)
                     {
                         DelFromEnd(StartOfCircularDoubly);
-                        display(StartOfCircularDoubly);
+                        DisplayCD(StartOfCircularDoubly);
                     }
                     break;
                 case 0:
