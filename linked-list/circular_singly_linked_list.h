@@ -6,7 +6,7 @@ struct CircularLinkedList
     CircularLinkedList *next;
 };
 
-CircularLinkedList *CreateNode(double NodeData)
+CircularLinkedList *CreateNodeCS(double NodeData) // CS : CircularSingly
 {
     CircularLinkedList *LL = new CircularLinkedList;
     LL->data = NodeData;  // == *(LL.data)=NodeData;
@@ -16,7 +16,7 @@ CircularLinkedList *CreateNode(double NodeData)
 
 void InsertAtBegin(CircularLinkedList *(&StarterNode), double data)
 {
-    CircularLinkedList *NewNode = CreateNode(data);
+    CircularLinkedList *NewNode = CreateNodeCS(data);
 
     if(StarterNode == nullptr)
     {
@@ -36,7 +36,7 @@ void InsertAtBegin(CircularLinkedList *(&StarterNode), double data)
 
 void InsertAtEnd(CircularLinkedList *(&StarterNode), double data)
 {
-    CircularLinkedList *NewNode = CreateNode(data);
+    CircularLinkedList *NewNode = CreateNodeCS(data);
 
     if(StarterNode == nullptr)
     {
@@ -58,7 +58,7 @@ void InsertAtEnd(CircularLinkedList *(&StarterNode), double data)
 
 void InsertInMid(CircularLinkedList *(&StarterNode), unsigned index, double data)
 {   // inserts at index
-    CircularLinkedList *NewNode = CreateNode(data);
+    CircularLinkedList *NewNode = CreateNodeCS(data);
     
     if(index == 0 || StarterNode == nullptr)
     {
@@ -174,58 +174,4 @@ void FreeMemory(CircularLinkedList *(&StarterNode))
     StarterNode = nullptr;
 }
 
-int main()
-{
-    CircularLinkedList *StartOfList = nullptr;
-    unsigned UserReq, index, exit=0;
-    double data;
-    while(true)
-    {
-        if(exit == 1)
-            break;
-        std::cout<<"\n\n1.InsertAtBegin\n2.InsertInMid\n3.InsertAtEnd\n4.DelFromBegin\n5.DelFromMid\n6.DelFromEnd\n0.Exit\n>> ";
-        std::cin>>UserReq;
-        switch(UserReq)
-        {
-            case 1:
-                std::cin>>data;
-                InsertAtBegin(StartOfList, data);
-                display(StartOfList);
-                break;
-            case 2:
-                std::cin>>data;
-                std::cin>>index;
-                InsertInMid(StartOfList, index, data);
-                display(StartOfList);
-                break;
-            case 3:
-                std::cin>>data;
-                InsertAtEnd(StartOfList, data);
-                display(StartOfList);
-                break;
-            case 4:
-                DelFromBegin(StartOfList);
-                display(StartOfList);
-                break;
-            case 5:
-                std::cin>>index;
-                DelFromMid(StartOfList, index);
-                display(StartOfList);
-                break;
-            case 6:
-                DelFromEnd(StartOfList);
-                display(StartOfList);
-                break;
-            case 0:
-                exit = 1;
-                break;
-            default:
-                std::cout<<"wrong input..!";
-                break;
-        }
-    }
-    FreeMemory(StartOfList);
-
-    return 0;
-}
-//MadMad_231
+//MadMad_177
