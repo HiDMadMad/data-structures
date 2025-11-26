@@ -1,64 +1,60 @@
 #include <iostream>
 
-struct CircularLinkedList
+struct CircularDoublyLinkedList
 {
     double data;
-    CircularLinkedList *next;
+    CircularDoublyLinkedList *prev, *next;
 };
 
-CircularLinkedList *CreateNode(double NodeData)
+CircularDoublyLinkedList *CreateNode(double NodeData)
 {
-    CircularLinkedList *LL = new CircularLinkedList;
-    LL->data = NodeData;  // == *(LL.data)=NodeData;
-    LL->next = nullptr;  // == *(LL.next)=nullptr;
+    CircularDoublyLinkedList *LL = new CircularDoublyLinkedList{NodeData, nullptr, nullptr};
+    // LL->data = NodeData;  // == *(LL.data)=NodeData;
+    // LL->next = nullptr;  // == *(LL.next)=nullptr;
+    // LL->prev = nullptr;  // == *(LL.prev)=nullptr;
     return LL;
 }
 
-void InsertAtBegin(CircularLinkedList *(&StarterNode), double data)
+void InsertAtBegin(CircularDoublyLinkedList *(&StarterNode), double data)
 {
-    CircularLinkedList *NewNode = CreateNode(data);
+    CircularDoublyLinkedList *NewNode = CreateNode(data);
 
     if(StarterNode == nullptr)
     {
-        NewNode->next = NewNode;
         StarterNode = NewNode;
+        StarterNode->prev = NewNode;
+        NewNode->next = StarterNode;
         return;
     }
 
-    CircularLinkedList *tmp = StarterNode;
-    while(tmp->next != StarterNode)
-        tmp = tmp->next;
-
-    NewNode->next = tmp->next;
+    NewNode->next = StarterNode;
+    NewNode->prev = StarterNode->prev;
+    StarterNode->prev->next = NewNode;
+    StarterNode->prev = NewNode;
     StarterNode = NewNode;
-    tmp->next = StarterNode;
 }
 
-void InsertAtEnd(CircularLinkedList *(&StarterNode), double data)
+void InsertAtEnd(CircularDoublyLinkedList *(&StarterNode), double data)
 {
-    CircularLinkedList *NewNode = CreateNode(data);
+    CircularDoublyLinkedList *NewNode = CreateNode(data);
 
     if(StarterNode == nullptr)
     {
-        NewNode->next = NewNode;
         StarterNode = NewNode;
-        return;       
+        StarterNode->prev = NewNode;
+        NewNode->next = StarterNode;
+        return;      
     }
 
-    CircularLinkedList *tmp = StarterNode;
-    while(tmp->next != StarterNode)
-        tmp = tmp->next;
-
     NewNode->next = StarterNode;
-    tmp->next = NewNode;
-    // or :
-    // tmp->next = NewNode;
-    // NewNode->next = StarterNode;
+    NewNode->prev = StarterNode->prev;
+    StarterNode->prev->next = NewNode;
+    StarterNode->prev = NewNode;
 }
 
-void InsertInMid(CircularLinkedList *(&StarterNode), unsigned index, double data)
-{   // inserts at index
-    CircularLinkedList *NewNode = CreateNode(data);
+void InsertInMid(CircularDoublyLinkedList *(&StarterNode), unsigned index, double data)
+{   // inserts at index 
+    CircularDoublyLinkedList *NewNode = CreateNode(data);
     
     if(index == 0 || StarterNode == nullptr)
     {
@@ -66,7 +62,7 @@ void InsertInMid(CircularLinkedList *(&StarterNode), unsigned index, double data
         return;
     }
     
-    CircularLinkedList *tmp = StarterNode;
+    CircularDoublyLinkedList *tmp = StarterNode;
     for(unsigned i=0; i<index-1; i++)
     {
         if(tmp->next == StarterNode)
@@ -75,14 +71,16 @@ void InsertInMid(CircularLinkedList *(&StarterNode), unsigned index, double data
     }
 
     NewNode->next = tmp->next;
+    NewNode->prev = tmp;
+    tmp->next->prev = NewNode;
     tmp->next = NewNode;
 }
 
-void DelFromBegin(CircularLinkedList *(&StarterNode))
+void DelFromBegin(CircularDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;
-    
+
     if(StarterNode->next == StarterNode)
     {
         delete StarterNode;
@@ -90,17 +88,14 @@ void DelFromBegin(CircularLinkedList *(&StarterNode))
         return;
     }
 
-    CircularLinkedList *LastNode = StarterNode;
-    while(LastNode->next != StarterNode)
-        LastNode = LastNode->next;
-
-    CircularLinkedList *tmp = StarterNode;
+    CircularDoublyLinkedList *tmp = StarterNode;
+    StarterNode->prev->next = StarterNode->next;
+    StarterNode->next->prev = StarterNode->prev;
     StarterNode = StarterNode->next;
-    LastNode->next = StarterNode;
     delete tmp;
 }
 
-void DelFromEnd(CircularLinkedList *(&StarterNode))
+void DelFromEnd(CircularDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;
@@ -112,15 +107,13 @@ void DelFromEnd(CircularLinkedList *(&StarterNode))
         return;
     }
 
-    CircularLinkedList *tmp = StarterNode;
-    while (tmp->next->next != StarterNode)
-        tmp = tmp->next;
-
-    delete tmp->next;
-    tmp->next = StarterNode;
+    CircularDoublyLinkedList *tmp = StarterNode->prev;
+    tmp->prev->next = StarterNode;
+    StarterNode->prev = tmp->prev;
+    delete tmp;
 }
 
-void DelFromMid(CircularLinkedList *(&StarterNode), unsigned index)
+void DelFromMid(CircularDoublyLinkedList *(&StarterNode), unsigned index)
 {   // deletes data at index
     if(StarterNode == nullptr)
         return;
@@ -131,42 +124,49 @@ void DelFromMid(CircularLinkedList *(&StarterNode), unsigned index)
         return;
     }
 
-    CircularLinkedList *tmp = StarterNode;
-    for(unsigned i=0; i<index-1; i++)
+    CircularDoublyLinkedList *tmp = StarterNode;
+    for(unsigned i=0; i<index; i++)
     {
         if(tmp->next == StarterNode)
             return;  // out of range
         tmp = tmp->next;
     }
 
-    CircularLinkedList *ToDel = tmp->next;
-    tmp->next = ToDel->next;
-    delete ToDel;
+    tmp->next->prev = tmp->prev;
+    tmp->prev->next = tmp->next;
+    delete tmp;
 }
 
 
-void display(CircularLinkedList *StarterNode)
+void display(CircularDoublyLinkedList *StarterNode)
 {
-    std::cout<<"\nStartOfList";
+    std::cout<<"\nStartOfList -> ";
     if(StarterNode == nullptr)
         return;
-    CircularLinkedList *tmp = StarterNode;
+    CircularDoublyLinkedList *tmp = StarterNode;
+    unsigned count=0;
     do
     {
-        std::cout<<" -> "<<tmp->data;
+        if(count==0)
+        {
+            std::cout<<tmp->data;
+            count++;
+        }
+        else
+            std::cout<<" <-> "<<tmp->data;
         tmp = tmp->next;
     }while(tmp != StarterNode);
 }
 
-void FreeMemory(CircularLinkedList *(&StarterNode))
+void FreeMemory(CircularDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;
 
-    CircularLinkedList *tmp = StarterNode->next;
+    CircularDoublyLinkedList *tmp = StarterNode->next;
     while (tmp != StarterNode)
     {
-        CircularLinkedList *next = tmp->next;
+        CircularDoublyLinkedList *next = tmp->next;
         delete tmp;
         tmp = next;
     }
@@ -176,7 +176,7 @@ void FreeMemory(CircularLinkedList *(&StarterNode))
 
 int main()
 {
-    CircularLinkedList *StartOfList = nullptr;
+    CircularDoublyLinkedList *StartOfList = nullptr;
     unsigned UserReq, index, exit=0;
     double data;
     while(true)

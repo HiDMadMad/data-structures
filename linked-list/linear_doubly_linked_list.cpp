@@ -1,30 +1,33 @@
 #include <iostream>
 
-struct LinearLinkedList
+struct LinearDoublyLinkedList
 {
     double data;
-    LinearLinkedList *next;
+    LinearDoublyLinkedList *prev, *next;
 };
 
-LinearLinkedList *CreateNode(double NodeData)
+LinearDoublyLinkedList *CreateNode(double NodeData)
 {
-    LinearLinkedList *LL = new LinearLinkedList;
-    LL->data = NodeData;  // == *(LL.data)=NodeData;
-    LL->next = nullptr;  // == *(LL.next)=nullptr;
+    LinearDoublyLinkedList *LL = new LinearDoublyLinkedList{NodeData, nullptr, nullptr};
+    // LL->data = NodeData;  // == *(LL.data)=NodeData;
+    // LL->next = nullptr;  // == *(LL.next)=nullptr;
+    // LL->prev = nullptr;  // == *(LL.prev)=nullptr;
     return LL;
 }
 
-void InsertAtBegin(LinearLinkedList *(&StarterNode), double data)
+void InsertAtBegin(LinearDoublyLinkedList *(&StarterNode), double data)
 {
-    LinearLinkedList *NewNode = CreateNode(data);
-
+    LinearDoublyLinkedList *NewNode = CreateNode(data);
+    
+    if(StarterNode != nullptr)
+        StarterNode->prev = NewNode;
     NewNode->next = StarterNode;
     StarterNode = NewNode;
 }
 
-void InsertAtEnd(LinearLinkedList *(&StarterNode), double data)
+void InsertAtEnd(LinearDoublyLinkedList *(&StarterNode), double data)
 {
-    LinearLinkedList *NewNode = CreateNode(data);
+    LinearDoublyLinkedList *NewNode = CreateNode(data);
 
     if(StarterNode == nullptr)
     {
@@ -32,16 +35,17 @@ void InsertAtEnd(LinearLinkedList *(&StarterNode), double data)
         return;       
     }
 
-    LinearLinkedList *tmp = StarterNode;
+    LinearDoublyLinkedList *tmp = StarterNode;
     while(tmp->next != nullptr)
         tmp = tmp->next;
 
     tmp->next = NewNode;
+    NewNode->prev = tmp;
 }
 
-void InsertInMid(LinearLinkedList *(&StarterNode), unsigned index, double data)
-{   // inserts at index  
-    LinearLinkedList *NewNode = CreateNode(data);
+void InsertInMid(LinearDoublyLinkedList *(&StarterNode), unsigned index, double data)
+{   // inserts at index
+    LinearDoublyLinkedList *NewNode = CreateNode(data);
     
     if(index == 0 || StarterNode == nullptr)
     {
@@ -49,7 +53,7 @@ void InsertInMid(LinearLinkedList *(&StarterNode), unsigned index, double data)
         return;
     }
     
-    LinearLinkedList *tmp = StarterNode;
+    LinearDoublyLinkedList *tmp = StarterNode;
     for(unsigned i=0; i<index-1; i++)
     {
         if(tmp->next == nullptr)
@@ -58,20 +62,25 @@ void InsertInMid(LinearLinkedList *(&StarterNode), unsigned index, double data)
     }
 
     NewNode->next = tmp->next;
+    NewNode->prev = tmp;
+    if(tmp->next != nullptr)
+        tmp->next->prev = NewNode;
     tmp->next = NewNode;
 }
 
-void DelFromBegin(LinearLinkedList *(&StarterNode))
+void DelFromBegin(LinearDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;
 
-    LinearLinkedList *tmp = StarterNode;
+    LinearDoublyLinkedList *tmp = StarterNode;
+    if(StarterNode->next != nullptr)
+        StarterNode->next->prev = nullptr;
     StarterNode = StarterNode->next;
     delete tmp;
 }
 
-void DelFromEnd(LinearLinkedList *(&StarterNode))
+void DelFromEnd(LinearDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;
@@ -83,17 +92,16 @@ void DelFromEnd(LinearLinkedList *(&StarterNode))
         return;
     }
 
-    LinearLinkedList *tmp = StarterNode;
-    while (tmp->next->next != nullptr)
+    LinearDoublyLinkedList *tmp = StarterNode;
+    while (tmp->next != nullptr)
         tmp = tmp->next;
-    
-    delete tmp->next;
-    tmp->next = nullptr;
+
+    tmp->prev->next = nullptr;
+    delete tmp;
 }
 
-void DelFromMid(LinearLinkedList *(&StarterNode), unsigned index)
+void DelFromMid(LinearDoublyLinkedList *(&StarterNode), unsigned index)
 {   // deletes data at index
-    
     if(StarterNode == nullptr)
         return;
     
@@ -103,34 +111,42 @@ void DelFromMid(LinearLinkedList *(&StarterNode), unsigned index)
         return;
     }
 
-    LinearLinkedList *tmp = StarterNode;
-    for(unsigned i=0; i<index-1; i++)
+    LinearDoublyLinkedList *tmp = StarterNode;
+    for(unsigned i=0; i<index; i++)
     {
         if(tmp->next == nullptr)
             return;  // out of range
         tmp = tmp->next;
     }
 
-    LinearLinkedList *ToDel = tmp->next;
-    tmp->next = ToDel->next;
-    delete ToDel;
+    if(tmp->next != nullptr)
+        tmp->next->prev = tmp->prev;
+    tmp->prev->next = tmp->next;
+    delete tmp;
 }
 
 
-void display(LinearLinkedList *StarterNode)
+void display(LinearDoublyLinkedList *StarterNode)
 {
-    std::cout<<"\nStartOfList";
-    LinearLinkedList *tmp = StarterNode;
+    std::cout<<"\nStartOfList -> ";
+    LinearDoublyLinkedList *tmp = StarterNode;
+    unsigned count=0;
     while(tmp != nullptr)
     {
-        std::cout<<" -> "<<tmp->data;
+        if(count==0)
+        {
+            std::cout<<tmp->data;
+            count++;
+        }
+        else
+            std::cout<<" <-> "<<tmp->data;
         tmp = tmp->next;
     }
 }
 
-void FreeMemory(LinearLinkedList *(&StarterNode))
+void FreeMemory(LinearDoublyLinkedList *(&StarterNode))
 {
-    LinearLinkedList *tmp;
+    LinearDoublyLinkedList *tmp;
     while (StarterNode != nullptr)
     {
         tmp = StarterNode;
@@ -141,7 +157,7 @@ void FreeMemory(LinearLinkedList *(&StarterNode))
 
 int main()
 {
-    LinearLinkedList *StartOfList = nullptr;
+    LinearDoublyLinkedList *StartOfList = nullptr;
     unsigned UserReq, index, exit=0;
     double data;
     while(true)
@@ -193,4 +209,4 @@ int main()
 
     return 0;
 }
-//MadMad_196
+//MadMad_212
