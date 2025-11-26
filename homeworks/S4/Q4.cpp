@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../../linked-list/linear_doubly_linked_list.h"
 
 void ChangeLL(LinearDoublyLinkedList *(&StarterNode))
@@ -32,4 +31,4 @@ int main()
 
     return 0;
 }
-//MadMad_35
+//MadMad_34

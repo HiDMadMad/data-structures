@@ -214,10 +214,10 @@ int main()
             }
         }
     }
-    FreeMemory(StartOfLinearSingly);
-    FreeMemory(StartOfCircularSingly);
-    FreeMemory(StartOfLinearDoubly);
-    FreeMemory(StartOfCircularDoubly);
+    FreeMemoryLS(StartOfLinearSingly);
+    FreeMemoryCS(StartOfCircularSingly);
+    FreeMemoryLD(StartOfLinearDoubly);
+    FreeMemoryCD(StartOfCircularDoubly);
 
     return 0;
 }

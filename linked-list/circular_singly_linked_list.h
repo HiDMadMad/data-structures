@@ -159,7 +159,7 @@ void DisplayCS(CircularLinkedList *StarterNode)
     std::cout<<" -> "<<StarterNode->data<<"(Starter Node)\n";
 }
 
-void FreeMemory(CircularLinkedList *(&StarterNode))
+void FreeMemoryCS(CircularLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;

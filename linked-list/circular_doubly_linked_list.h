@@ -159,7 +159,7 @@ void DisplayCD(CircularDoublyLinkedList *StarterNode)
     std::cout<<" -> "<<StarterNode->data<<"(Starter Node)\n";
 }
 
-void FreeMemory(CircularDoublyLinkedList *(&StarterNode))
+void FreeMemoryCD(CircularDoublyLinkedList *(&StarterNode))
 {
     if(StarterNode == nullptr)
         return;

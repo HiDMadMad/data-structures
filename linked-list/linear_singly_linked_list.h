@@ -128,7 +128,7 @@ void DisplayLS(LinearLinkedList *StarterNode)
     }
 }
 
-void FreeMemory(LinearLinkedList *(&StarterNode))
+void FreeMemoryLS(LinearLinkedList *(&StarterNode))
 {
     LinearLinkedList *tmp;
     while (StarterNode != nullptr)

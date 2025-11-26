@@ -144,7 +144,7 @@ void DisplayLD(LinearDoublyLinkedList *StarterNode)
     }
 }
 
-void FreeMemory(LinearDoublyLinkedList *(&StarterNode))
+void FreeMemoryLD(LinearDoublyLinkedList *(&StarterNode))
 {
     LinearDoublyLinkedList *tmp;
     while (StarterNode != nullptr)
