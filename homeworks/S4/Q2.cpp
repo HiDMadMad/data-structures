@@ -49,7 +49,6 @@ int main()
     InsertAtBegin(StartOfList, 30);
     InsertAtBegin(StartOfList, 20);
     InsertAtBegin(StartOfList, 10);
-
     DisplaySkipper(StartOfList);
 
     LinearDoublyLinkedList *EvenLL = skipper(StartOfList);
@@ -59,4 +58,4 @@ int main()
 
     return 0;
 }
-//MadMad_62
+//MadMad_61
