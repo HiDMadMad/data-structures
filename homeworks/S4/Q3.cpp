@@ -3,6 +3,9 @@
 
 unsigned NumOfNodes(CircularDoublyLinkedList *(&StarterNode))
 {
+    if(StarterNode == nullptr)
+        return 0;
+
     CircularDoublyLinkedList *tmp = StarterNode;
     unsigned count = 1;
     while(tmp->next != StarterNode)
@@ -30,4 +33,4 @@ int main()
 
     return 0;
 }
-//MadMad_33
+//MadMad_36
