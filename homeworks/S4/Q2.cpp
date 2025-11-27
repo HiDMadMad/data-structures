@@ -6,9 +6,9 @@ LinearDoublyLinkedList *skipper(LinearDoublyLinkedList *(&StarterNode))
     if(StarterNode == nullptr || StarterNode->next == nullptr)
         return StarterNode;
 
-        LinearDoublyLinkedList *OddTmp = StarterNode;    
-        LinearDoublyLinkedList *StartOfEvens = StarterNode->next;
-        LinearDoublyLinkedList *EvenTmp = StartOfEvens;
+    LinearDoublyLinkedList *OddTmp = StarterNode;    
+    LinearDoublyLinkedList *StartOfEvens = StarterNode->next;
+    LinearDoublyLinkedList *EvenTmp = StartOfEvens;
     while((OddTmp != nullptr && OddTmp->next != nullptr) && (EvenTmp != nullptr && EvenTmp->next != nullptr))
     {
         OddTmp->next = OddTmp->next->next;
