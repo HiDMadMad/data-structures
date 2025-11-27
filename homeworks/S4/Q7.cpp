@@ -34,7 +34,7 @@ int main()
     LLMerge(StartOfList1, StartOfList2);
 
     std::cout<<'\n';
-    DisplayLS(StartOfList1);
+    DisplayLS(StartOfList1);  // merged
     DisplayLS(StartOfList2);
 
     return 0;
