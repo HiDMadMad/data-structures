@@ -9,7 +9,7 @@ LinearDoublyLinkedList *skipper(LinearDoublyLinkedList *(&StarterNode))
     LinearDoublyLinkedList *OddTmp = StarterNode;    
     LinearDoublyLinkedList *StartOfEvens = StarterNode->next;
     LinearDoublyLinkedList *EvenTmp = StartOfEvens;
-    while((OddTmp != nullptr && OddTmp->next != nullptr) && (EvenTmp != nullptr && EvenTmp->next != nullptr))
+    while((OddTmp!=nullptr && OddTmp->next!=nullptr) && (EvenTmp!=nullptr && EvenTmp->next!=nullptr))
     {
         OddTmp->next = OddTmp->next->next;
         EvenTmp->next = EvenTmp->next->next;
@@ -25,8 +25,7 @@ LinearDoublyLinkedList *skipper(LinearDoublyLinkedList *(&StarterNode))
 
 void DisplaySkipper(LinearDoublyLinkedList* StarterNode)
 {
-    LinearDoublyLinkedList* tmp = StarterNode;
-
+    LinearDoublyLinkedList *tmp = StarterNode;
     while (tmp != nullptr)
     {
         if (tmp->next != nullptr)
