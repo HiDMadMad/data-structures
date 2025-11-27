@@ -6,8 +6,8 @@ void ChangeLL(LinearDoublyLinkedList *(&StarterNode))
     LinearDoublyLinkedList *tmp = StarterNode;
     while(tmp != nullptr)
     {
-        SumOfPrev+=tmp->data;
-        tmp->data=SumOfPrev;
+        SumOfPrev += tmp->data;
+        tmp->data = SumOfPrev;
         tmp = tmp->next;
     }
 }
