@@ -6,4 +6,8 @@ const char GetIndex[]{"\nenter the index (int > 0)\n>> "};
 
 const char GetData[]{"\nenter the data (double)\n>> "};
 
-//MadMad_9
+const char StackMenu[]{"\n\n1.push\n2.pop\n0.exit\n>> "};
+
+const char GetSize[]{"\nenter the size (int > 0)\n>> "};
+
+//MadMad_13
