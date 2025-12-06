@@ -59,7 +59,7 @@ int main()
             if(LLExit == 1)
                 break;
 
-            std::cout<<AppMenu;
+            std::cout<<LLAppMenu;
             std::cin>>UserReq;
             switch(UserReq)
             {
