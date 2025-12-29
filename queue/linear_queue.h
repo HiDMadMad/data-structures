@@ -14,7 +14,7 @@ bool LqIsFull(struct LinearQueue &LQue)
 
 bool LqIsEmpty(struct LinearQueue &LQue)
 {
-    return LQue.front == LQue.rear;
+    return (LQue.front == LQue.rear);
 }
 
 bool LqInsert(struct LinearQueue &LQue, double item)
