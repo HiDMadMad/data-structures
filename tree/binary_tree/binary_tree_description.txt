@@ -1,0 +1,16 @@
+# binary tree :
+
+## structure :
+1️⃣ a data
+2️⃣ pointer to left-child
+3️⃣ pointer to right-child
+
+## number of different binary trees with 'n' nodes :
+for binary tree 't' with root 'r' :
+->  n=0  ->  t(n) = 1
+|
+->  n>=1  ->  t(n) =  sum of(i=1 to n) :  t(i-1) * t(n-i)
+|
+-> in general(catalan numbers) -> t(n) = (1/(n+1)) * (choose n of 2n)
+
+MadMad_16

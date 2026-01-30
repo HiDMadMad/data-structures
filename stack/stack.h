@@ -46,4 +46,57 @@ void ShowItems(stack &stk)
     }
 }
 
-// MadMad_49
+//------------------------------------------
+struct ChStack
+{
+    unsigned ItemsSize;
+    char *items;
+    int top = -1;
+};
+
+bool ChIsFull(ChStack &ChStk)
+{
+    if(ChStk.top == ChStk.ItemsSize-1)
+        return true;
+    return false;
+}
+
+bool ChIsEmpty(ChStack &ChStk)
+{
+    if(ChStk.top == -1)
+        return true;
+    return false;
+}
+    
+bool ChPush(ChStack &ChStk, char item)
+{
+    if(ChIsFull(ChStk))
+        return false;
+    ChStk.items[++ChStk.top] = item;
+    return true;
+}
+
+char ChPop(ChStack &ChStk)
+{
+    if(ChIsEmpty(ChStk))
+        return '\0';
+    return ChStk.items[ChStk.top--];
+}
+
+char ChPeek(ChStack &ChStk)
+{
+    if(ChIsEmpty(ChStk))
+        return '\0';
+    return ChStk.items[ChStk.top];
+}
+
+void ChShowItems(ChStack &ChStk)
+{
+    std::cout<<"\n\nin stack :";
+    for(int i=0; i<ChStk.top+1; i++)
+    {
+        std::cout<<"\n"<<ChStk.items[i];
+    }
+}
+
+// MadMad_102

@@ -14,4 +14,6 @@ const char QueueMenu[]{"\n\n1.linear_queue\n2.circular_queue\n0.exit\n>> "};
 
 const char QueAppMenu[]{"\n\n1.insert\n2.remove\n0.exit\n>> "};
 
-//MadMad_17
+const char GetEquation[]{"\nenter your equation\n>> "};
+
+//MadMad_19

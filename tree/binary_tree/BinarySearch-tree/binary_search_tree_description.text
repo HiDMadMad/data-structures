@@ -1,0 +1,32 @@
+# binary search tree (BST) :
+
+## conditions :
+1️⃣ left data is smaller than root
+2️⃣ right data is bigger than root
+3️⃣ all sub trees must be binary-tree
+4️⃣ without duplicated data (like sets in PY)
+
+## for a BST with n data :
+1️⃣ height :  log(n) <= height <= n
+2️⃣ maximum height : n
+
+## number of different BSTs with 'n' nodes = (1/(n+1)) * (choose n of 2n)
+
+## how to search :
+* have address-of-root(r) and key
+1️⃣ if key == (data OR NULL) -> return r✅
+2️⃣ if key < data  ->  recursive(left sub-tree)
+3️⃣ if key > data  ->  recursive(right sub-tree)
+
+## time complexity : 
+O(log(n)) <= time complexity <= O(n)
+
+## to rebuild a tree from ordered-arrays we need at least two of them
+
+## BST possibly unbalanced
+    so it can be not best for searches
+        so -> let's go to 'almost balanced' like 'Red-Black's  (less calculation cost )
+        OR
+        -> let's go to 'strictly balanced' like 'AVL's  (smaller height)
+
+MadMad_32

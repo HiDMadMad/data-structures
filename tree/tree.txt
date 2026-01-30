@@ -1,0 +1,76 @@
+tree :
+ each node is a tree(even by it self)
+
+node :
+ an element of a tree
+
+root :
+ a node with no parent
+
+leaf :
+ a node with no children
+
+sibling :
+ nodes with the same parent
+
+forest :
+ a collection of trees
+
+
+
+ancestors :
+ all nodes on the path from a node to the root
+
+descendants :
+ all nodes in a tree or subtree with a given root
+
+sub tree :
+ a node and all nodes below it (a node with all of its descendants)
+
+internal node :
+ all nodes except leaf nodes
+
+
+
+tree depth :
+ root is at depth 0 and each lower node is one level deeper
+
+node depth :
+ given node is at depth 0 and each lower node is one level deeper
+
+tree height :
+ maximum path length from the root to a leaf
+
+node hight :
+ maximum path length from a node to a leaf
+ 
+JUST A TIP :
+ when we go down from the root, depth increases
+ and height decreases because we get closer to the leaves
+
+
+
+k-array tree :
+ each node can have at most k children
+
+complete k-array tree :
+ each node has k children or no children
+
+ordered tree :
+ order of children is important
+
+labeled tree :
+ each node has a label
+
+balanced tree :
+ leaf depths difference at most is one
+
+completely balanced tree :
+ all leaf nodes have the same depth
+
+binary tree :
+ a k-array tree where k equals 2
+ each node has data, a left child, and a right child
+ go to ../tree/binary_tree/binary_tree.txt
+
+MadMad_76
